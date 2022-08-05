@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Card from '../../components/card/Card';
 
-const Home = props => {
-  const [data, setData] = useState([]);
+const Home = () => {
+  const [data, setData] = useState( [] );
+  const [loading, setLoading] = useState( true );
+  const [error, setError] = useState( null );
 
   const fetchData = async () => {
+    try {
+      setError(null);
+      setLoading(true);
     const response = await axios.get('http://localhost:3000/api/v1/posts/');
-    setData(response.data);
+      setData( response.data );
+      setLoading(false);
+    } catch ( error ) {
+      setError( error );
+    }
   };
 
   useEffect(() => {
@@ -15,13 +25,7 @@ const Home = props => {
 
   return (
     <div>
-      {data.map( post => (
-        <div key={post.id}>
-          <h1>{post.title}</h1> 
-          <img src={post.image_url} alt={`Of ${post.title} usually aerial taken from above, trying to show the most known bird's angle of said city`} />
-          <p>{post.content}</p>
-        </div>
-      ) )}
+      {loading ? <h1>loading...</h1> : error ? <ErrorPage/> : <Card data={data} />}
     </div>
   );
 };
