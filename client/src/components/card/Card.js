@@ -11,8 +11,8 @@ const Card = props => {
         {data.map(el => (
           <div key={el.id}>
             <h1>{el.title}</h1>
-
             <img src={el.image_url} alt={el.title} />
+            <button className='btn-map'>See Map</button>
           </div>
         ))}
       </div>

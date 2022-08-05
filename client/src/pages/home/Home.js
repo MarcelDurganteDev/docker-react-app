@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from '../../components/card/Card';
 import ErrorPage from '../errorPage/ErrorPage'
+import GoogleMap from '../../components/googleMap/GoogleMap';
 
 const Home = () => {
   const [data, setData] = useState( [] );
@@ -30,6 +31,7 @@ const Home = () => {
   return (
     <div>
       {loading ? <h1>loading...</h1> : error ? <ErrorPage error={error} /> : <Card data={data} />}
+      <GoogleMap />
     </div>
   );
 };
