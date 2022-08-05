@@ -1,4 +1,4 @@
-
+import Home from './pages/home/Home';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         </p>
        
       </header>
+      <Home/>
     </div>
   );
 }
