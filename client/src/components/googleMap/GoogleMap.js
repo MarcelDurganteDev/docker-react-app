@@ -13,7 +13,7 @@ const GoogleMap = () => {
   
   return (
     <div>
-      <iframe id="iFrameId" title="map" width="100%" height="100%" frameBorder="0" style={{ border: 0 }} allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
+      <iframe id="iFrameId" title="map" width="300px" height="300px" frameBorder="0" style={{ border: 0 }} allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
     </div>
   )
 }
