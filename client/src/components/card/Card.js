@@ -12,7 +12,7 @@ const Card = props => {
           <div key={el.id}>
             <h1>{el.title}</h1>
 
-            <img src={el.image} alt={el.title} />
+            <img src={el.image_url} alt={el.title} />
           </div>
         ))}
       </div>
