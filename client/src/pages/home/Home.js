@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div>
       {loading ? <h1>loading...</h1> : error ? <ErrorPage error={error} /> : <Card data={data} openModal={modal => setModal(modal)} />}
-      {modal && <Modal />}
+      {modal && <Modal closeModal={ setModal} />}
     </div>
   );
 };
