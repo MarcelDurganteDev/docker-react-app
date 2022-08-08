@@ -1,53 +1,56 @@
-import axios from 'axios';
-import React, {useState} from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const CreatePost = () => {
+  const { register, handleSubmit } = useForm();
 
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState( '' );
-  
-  const createPost = async () => {
-    const response = await axios.post( 'http://localhost:3000/api/v1/posts/', {
-      title,
-      content
-    } );
-    console.log( response );
+  const onSubmit = data => {
+    alert(JSON.stringify(data));
   };
 
-
-
   return (
-    <div className='create-post__page'>
-      <div className='create-post__container'>
-        <h1>Create Post</h1>
-        <div className='input-group'>
-          <label htmlFor='title'>Title</label>
-          <input
-            type='text'
-            name='title'
-            id='title'
-            onChange={event => {
-              setTitle(event.target.value);
-            }}
-          />
-        </div>
-        <div className='input-group'>
-          <label htmlFor='content'>Text</label>
-          <textarea
-            name='content'
-            id='content'
-            cols='30'
-            rows='10'
-            onChange={event => {
-              setContent(event.target.value);
-            }}></textarea>
-        </div>
-        <div className='input-group'>
-          <label htmlFor='image'>Image</label>
-          <input type='file' name='image' id='image' />
-        </div>
-        <button onSubmit={createPost()}>Post</button>
+    <div className='container'>
+      <div className='mt-3'>
+        <h3>Create Post</h3>
       </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='form-group'>
+          <label>
+            Title:
+            <input
+              {...register('title')}
+            />
+          </label>
+        </div>
+        <div className='input-group'>
+          <label>
+            Description:
+            <textarea
+              {...register('content')}
+             
+              cols='30'
+              rows='10'></textarea>
+          </label>
+        </div>
+        <div className='input-group'>
+          <label>
+            Latitude:
+            <input
+              {...register('lat')}
+            />
+          </label>
+        </div>
+
+        <div className='input-group'>
+          <label>
+            Longitude:
+            <input
+              {...register('long')}
+            />
+          </label>
+        </div>
+        <input type='submit' value='submit' className='btn btn-primary' />
+      </form>
     </div>
   );
 };

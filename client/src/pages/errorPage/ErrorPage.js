@@ -1,13 +1,13 @@
 import React from 'react'
 
-const errorPage = props => {
+const ErrorPage = () => {
 
-  const { error } = props;
+
   return (
     <div>
-      <h1>{error}</h1>
+      <h1>Page not found!</h1>
     </div>
   )
 }
 
-export default errorPage
+export default ErrorPage
