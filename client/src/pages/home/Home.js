@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react';
 /* import axios from 'axios'; */
 import Card from '../../components/card/Card';
 import ErrorPage from '../errorPage/ErrorPage';
-import MapModal from '../../components/mapModal/MapModal';
-import { getPosts } from '../../api/api';
-import GoogleMap from '../../components/googleMap/GoogleMap';
+/* import MapModal from '../../components/mapModal/MapModal';
+ */import { getPosts } from '../../api/api';
 
 const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [modal, setModal] = useState(false);
-
+/*   const [modal, setModal] = useState(false);
+ */
   useEffect(() => {
     try {
       setLoading(true);
@@ -38,12 +37,14 @@ const Home = () => {
         ) : error ? (
           <ErrorPage error={error} />
         ) : (
-          <Card data={data} openModal={modal => setModal(modal)} />
+          <Card data={data} />
         )}
-        {modal && <MapModal closeModal={setModal} />}
+       {/*  {modal && <MapModal closeModal={setModal} data={data} />} */}
       </div>
     </div>
   );
 };
 
 export default Home;
+
+//  <Card data={data} openModal={modal => setModal(modal)} />

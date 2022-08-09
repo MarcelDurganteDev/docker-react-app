@@ -1,22 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { GrEdit } from 'react-icons/gr';
-import { useNavigate } from 'react-router-dom';
 import { deletePost } from '../../api/api';
+import Modal from '../../components/modal/Modal';
+
 
 
 const Card = props => {
+  const [modal, setModal] = useState( false );
+  const [tempData, setTempData] = useState( [] );
+
   const { data, openModal } = props;
-  const navigate = useNavigate();
+
 
   const handleDelete = id => {
     deletePost( id );
   };
 
+  const getData = ( id, title, lat, long ) => {
+    let tempData = [id, title, lat, long]
+    setTempData(item => [item, ...tempData]);
+    return setModal( true );
+    
+  }
+  console.log( 'tempData', tempData );
 
-
-  if (data) {
     return (
       <div>
         {data.map(post => (
@@ -41,7 +50,11 @@ const Card = props => {
                   Read
                 </a>
                 <button
-                  onClick={() => openModal(true)}
+                  onClick={() => {
+                    getData(post.id, post.title, post.lat, post.long);
+                    setModal(true);
+                  }}
+                  id={post.id}
                   className='btn btn-primary'>
                   Map
                 </button>
@@ -58,11 +71,17 @@ const Card = props => {
             </div>
           </div>
         ))}
+        {modal && (
+          <Modal
+            closeModal={setModal}
+            id={tempData[1]}
+            title={tempData[2]}
+            lat={tempData[3]}
+            long={tempData[4]}
+          />
+        )}
       </div>
     );
-  } else {
-    return <div>loading...</div>;
-  }
 };
 
 export default Card;
