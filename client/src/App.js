@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import * as route from './routes';
 import Home from './pages/home/Home';
 import CreatePost from './pages/createPost/CreatePost';
-import ErrorPage from './pages/errorPage/ErrorPage';
 import EditPost from './pages/editPost/EditPost';
+import ErrorPage from './pages/errorPage/ErrorPage';
 import NavBar from './components/navBar/NavBar';
 
 function App() {

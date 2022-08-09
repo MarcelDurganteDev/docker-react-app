@@ -28,8 +28,13 @@ const Home = () => {
     fetchData();
   }, [] );
 
+  console.log(data);
+
   return (
     <div className='container'>
+      <div className='mt-3'>
+        <h3>Posts</h3>
+
       {loading ? (
         <h1>loading...</h1>
       ) : error ? (
@@ -38,6 +43,7 @@ const Home = () => {
         <Card data={data} openModal={modal => setModal(modal)} />
       )}
       {modal && <Modal closeModal={setModal} />}
+      </div>
     </div>
   );
 };
