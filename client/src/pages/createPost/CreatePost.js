@@ -9,7 +9,7 @@ const CreatePost = () => {
  
   const onSubmit = async data => {
     await createPost( data );
-    navigate( '/' );
+    navigate('/');
   };
 
   return (

@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import PostForm from '../../components/postForm/PostForm';
+import { getPost } from '../../api/api';
+import { useParams } from 'react-router-dom';
+import { updatePost } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 const EditPost = () => {
   const [post, setPost] = useState();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setPost({
-      title: 'title',
-      text: 'text',
-      image_url: 'image_url',
-      lat: 'lat',
-      long: 'long'
-    });
-  }, []);
+    const fetchData = async () => {
+      const result = await getPost(id);
+      setPost(result);
+    };
+    fetchData();
+  }, [id]);
 
-  const onSubmit = data => {
-    console.log(data);
-    alert(JSON.stringify(data));
+  const onSubmit = async data => {
+    await updatePost(id, data);
+    navigate('/');
   };
 
   return post ? (

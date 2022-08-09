@@ -14,7 +14,6 @@ function App() {
       <Routes>
         <Route exact path={route.HOME} element={<Home />} />
         <Route path={route.CREATE} element={<CreatePost />} />
-        <Route path={route.LIST} element={<Home />} />
         <Route path={route.READ} element={<Home />} />
         <Route path={route.UPDATE} element={<EditPost />} />
         <Route path={route.DELETE} element={<Home />} />

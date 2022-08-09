@@ -1,6 +1,6 @@
 import React from 'react';
 import GoogleMap from '../googleMap/GoogleMap';
-import './Modal.scss';
+import './MapModal.scss';
 
 const Modal = ({ closeModal }) => {
   return (

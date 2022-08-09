@@ -2,13 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { GrEdit } from 'react-icons/gr';
+import { useNavigate } from 'react-router-dom';
+import { deletePost } from '../../api/api';
+
 
 const Card = props => {
   const { data, openModal } = props;
+  const navigate = useNavigate();
 
-  const handleEdit = id => {
-    console.log(id);
+  const handleDelete = id => {
+    deletePost( id );
   };
+
+
 
   if (data) {
     return (
@@ -40,13 +46,13 @@ const Card = props => {
                   Map
                 </button>
                 <Link to={`/post/update/${post.id}`}>
-                  <GrEdit
-                    style={{ color: 'green', fontSize: '30px' }}
-                    onClick={() => handleEdit(post.id)}
-                  />
+                  <GrEdit style={{ color: 'green', fontSize: '30px' }} />
                 </Link>
+
                 <Link to={`/post/delete/${post.id}`}>
-                  <RiDeleteBinLine style={{ color: 'red', fontSize: '30px' }} />
+                  <RiDeleteBinLine
+                    style={{ color: 'green', fontSize: '30px' }}
+                  />
                 </Link>
               </div>
             </div>
