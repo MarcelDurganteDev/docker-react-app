@@ -1,11 +1,15 @@
 import React from 'react';
 import PostForm from '../../components/postForm/PostForm';
-
+import { createPost } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
+
+  const navigate = useNavigate();
  
-  const onSubmit = data => {
-   alert( JSON.stringify( data ) );
+  const onSubmit = async data => {
+    await createPost( data );
+    navigate( '/' );
   };
 
   return (

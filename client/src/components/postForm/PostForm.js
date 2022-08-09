@@ -1,17 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 const PostForm = ( { post, onSubmit } ) => {
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit } = useForm( {
+    defaultValues: post ? post : {} // if post is undefined, defaultValues will be an empty object
+
   });
 
-  const navigate = useNavigate();
-
   const submitHandler = handleSubmit( data => {
-    alert( JSON.stringify( data ) );
     onSubmit(data);
-    navigate('/');
   });
 
   return (

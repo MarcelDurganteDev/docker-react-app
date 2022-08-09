@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PostForm from '../../components/postForm/PostForm';
 
 const EditPost = () => {
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState();
 
   useEffect(() => {
     setPost({
