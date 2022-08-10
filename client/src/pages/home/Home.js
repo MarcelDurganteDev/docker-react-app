@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-/* import axios from 'axios'; */
+/* import Card1 from '../../components/card1/Card1';
+ */ import ErrorPage from '../errorPage/ErrorPage';
+import { getPosts } from '../../api/api';
 import Card from '../../components/card/Card';
-import ErrorPage from '../errorPage/ErrorPage';
-/* import MapModal from '../../components/mapModal/MapModal';
- */import { getPosts } from '../../api/api';
+import './Home.scss';
 
 const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-/*   const [modal, setModal] = useState(false);
- */
+
   useEffect(() => {
     try {
       setLoading(true);
@@ -30,21 +29,20 @@ const Home = () => {
 
   return (
     <div className='container'>
-      <div className='mt-3'>
-        <h3>Posts</h3>
-        {loading ? (
-          <h1>loading...</h1>
-        ) : error ? (
-          <ErrorPage error={error} />
-        ) : (
-          <Card data={data} />
-        )}
-       {/*  {modal && <MapModal closeModal={setModal} data={data} />} */}
-      </div>
-    </div>
+      <h1>Posts</h1>
+      <hr />
+      
+       
+          {loading ? (
+            <h1>loading...</h1>
+          ) : error ? (
+            <ErrorPage error={error} />
+          ) : (
+            <Card data={data} />
+          )}
+        </div>
+     
   );
 };
 
 export default Home;
-
-//  <Card data={data} openModal={modal => setModal(modal)} />

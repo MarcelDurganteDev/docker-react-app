@@ -13,7 +13,7 @@ const GoogleMap = props => {
 
   return (
     
-      <iframe id="iFrameId" title="map" frameBorder="0"></iframe>
+      <iframe id="iFrameId" title="map" width='360px' height='360px'  frameBorder="0"></iframe>
     
   )
 }

@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import * as route from '../../routes';
 
 const navBar = () => (
-  <div>
-    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+  <div className='d-flex justify-content-between align-items-center'>
+    <nav className='navbar navbar-light navbar-expand-xl'>
       <ul className='navbar-nav mr-auto'>
-        <li className='navbar-item'>
-          <Link to={route.HOME} className='nav-link'>
+        <li className='nav-item active mx-5'>
+          <Link to={route.HOME} className='nav-link fs-1'>
             Home
           </Link>
         </li>
-        <li className='navbar-item'>
-          <Link to={route.CREATE} className='nav-link'>
+        <li className='nav-item active mx-5'>
+          <Link to={route.CREATE} className='nav-link fs-1'>
             Create
           </Link>
         </li>

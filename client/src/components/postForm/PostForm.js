@@ -12,9 +12,10 @@ const PostForm = ( { post, onSubmit } ) => {
   });
 
   return (
+    
     <form onSubmit={submitHandler}>
       <div className='form-outline mb-4'>
-        <label className='form-label' htmlFor='title'>
+        <label className='form-label fs-3' htmlFor='title'>
           Title
           <input
             {...register('title')}
@@ -27,10 +28,10 @@ const PostForm = ( { post, onSubmit } ) => {
       </div>
 
       <div className='form-outline mb-4'>
-        <label className='form-label' htmlFor='content'>
+        <label className='form-label fs-3' htmlFor='content'>
           Text
           <textarea
-            {...register( 'content' )}
+            {...register('content')}
             type='text'
             name='content'
             id='content'
@@ -41,8 +42,8 @@ const PostForm = ( { post, onSubmit } ) => {
       </div>
 
       <div className='form-outline mb-4'>
-        <label className='form-label' htmlFor='image_url'>
-          Image URL
+        <label className='form-label fs-3' htmlFor='image_url'>
+          Image URL ( must include <b>http://</b> )
           <input
             type='url'
             name='image_url'
@@ -54,7 +55,7 @@ const PostForm = ( { post, onSubmit } ) => {
       </div>
 
       <div className='form-outline mb-4'>
-        <label className='form-label' htmlFor='lat'>
+        <label className='form-label fs-3' htmlFor='lat'>
           Latitude{' '}
           <input
             type='text'
@@ -67,7 +68,7 @@ const PostForm = ( { post, onSubmit } ) => {
       </div>
 
       <div className='form-outline mb-4'>
-        <label className='form-label' htmlFor='long'>
+        <label className='form-label fs-3' htmlFor='long'>
           Longitude{' '}
           <input
             type='text'

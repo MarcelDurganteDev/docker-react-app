@@ -7,17 +7,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  align-content: center;
 
   &__container {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     background-color: c.$white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 12px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 25px;
+
+    &__body {
+      width: 90%;
+      height: 90%;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     &__close-btn {
       display: flex;
@@ -28,6 +38,7 @@
         border: none;
         font-size: 2rem;
         cursor: pointer;
+        color: red;
       }
     }
 
@@ -35,12 +46,9 @@
       display: inline-block;
       text-align: center;
       margin-top: 10px;
+      margin-bottom: 30px;
     }
   }
 
-  &__body {
-    width: auto;
-    height: auto;
-  }
+  
 }
-
