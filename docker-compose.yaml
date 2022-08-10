@@ -6,17 +6,30 @@ services:
     container_name: wg-web-challenge
     ports:
       - 3000:3000
+    volumes:
+      - ./data:/app/data
+      - ./app/node_modules
   docker-react-app:
+    image: docker-react-wefox
     build: ./client
     container_name: docker_react_app
     ports:
       - 4000:4000
+    stdin_open: true
+    tty: true
     volumes:
       - ./client:/app
       - /app/node_modules
-    stdin_open: true
-    tty: true
+networks:
+  react-app:
+    driver: bridge
+volumes:
+  
+  app-data:
+    driver: local
 
+
+    
       
     
     
