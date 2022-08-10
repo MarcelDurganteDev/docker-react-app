@@ -19,7 +19,7 @@ export const updatePost = (  id, post) => {
 };
 
 export const deletePost = id => {
-  return axios.delete(`http://localhost:3000/api/v1/posts/${id}`);
+  return axios.delete( `http://localhost:3000/api/v1/posts/${id}` );
 };
 
 

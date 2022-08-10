@@ -4,7 +4,6 @@ import './Modal.scss';
 
 const Modal = ( props ) => {
 
-  console.log( 'props', props );
  
   return (
     <div className='modal'>

@@ -9,6 +9,11 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [value, setValue] = useState([]);
+
+  function handleChange(newState) {
+    setValue(newState);
+  }
 
   useEffect(() => {
     try {
@@ -31,17 +36,15 @@ const Home = () => {
     <div className='container'>
       <h1>Posts</h1>
       <hr />
-      
-       
-          {loading ? (
-            <h1>loading...</h1>
-          ) : error ? (
-            <ErrorPage error={error} />
-          ) : (
-            <Card data={data} />
-          )}
-        </div>
-     
+
+      {loading ? (
+        <h1>loading...</h1>
+      ) : error ? (
+        <ErrorPage error={error} />
+      ) : (
+        <Card data={data} value={value} onChange={handleChange} />
+      )}
+    </div>
   );
 };
 

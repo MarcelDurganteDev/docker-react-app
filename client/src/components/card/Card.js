@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { GrEdit } from 'react-icons/gr';
-import { deletePost } from '../../api/api';
 import Modal from '../../components/modal/Modal';
 import DeleteModal from '../../components/deleteModal/DeleteModal';
 
@@ -10,17 +9,20 @@ const Card = props => {
   const [modal, setModal] = useState(false); 
   const [deleteModal, setDeleteModal] = useState(false); 
   const [tempData, setTempData] = useState([]);
+  const [tempData2, setTempData2] = useState([]);
 
-  const { data, openModal } = props;
-
-  /* const handleDelete = id => {
-    deletePost( id );
-  }; */
+  const { data, value, onChange } = props;
 
   const getData = (id, title, lat, long) => {
     let tempData = [id, title, lat, long];
     setTempData( item => [item, ...tempData] );
     return setModal(true);
+  };
+
+  const getDataDelModal = (id, title) => {
+    let tempData2 = [id, title];
+    setTempData2(item => [item, ...tempData2]);
+    return setDeleteModal(true);
   };
 
   return (
@@ -40,7 +42,7 @@ const Card = props => {
             <div className='card-body d-flex flex-column'>
               <h5 className='card-title'>{post.title}</h5>
               <p className='card-text'>{post.content}</p>
-              <div class='card-footer mt-auto d-flex justify-content-between'>
+              <div className='card-footer mt-auto d-flex justify-content-between'>
                 <div>
                   <a href='#!' className='btn btn-primary'>
                     Read
@@ -59,11 +61,16 @@ const Card = props => {
                   <Link to={`/post/update/${post.id}`}>
                     <GrEdit style={{ color: 'green', fontSize: '2rem' }} />
                   </Link>
-                  <Link to={`/post/delete/${post.id}`}>
+                  <button
+                    className='border-0'
+                    onClick={() => {
+                      getDataDelModal(post.id, post.title);
+                      setDeleteModal(true);
+                    }}>
                     <RiDeleteBinLine
                       style={{ color: 'green', fontSize: '2rem' }}
                     />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -79,7 +86,15 @@ const Card = props => {
           long={tempData[4]}
         />
       )}
-      {deleteModal && <DeleteModal closeModal={setModal} id={tempData[1]} />}
+      {deleteModal && (
+        <DeleteModal
+          closeDeleteModal={setDeleteModal}
+          id={tempData2[1]}
+          title={tempData2[2]}
+          value={value}
+          onChange={onChange}
+        />
+      )}
     </div>
   );
 };
