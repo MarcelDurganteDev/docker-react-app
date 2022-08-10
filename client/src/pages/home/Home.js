@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-/* import Card1 from '../../components/card1/Card1';
- */ import ErrorPage from '../errorPage/ErrorPage';
+import ErrorPage from '../errorPage/ErrorPage';
 import { getPosts } from '../../api/api';
 import Card from '../../components/card/Card';
 import './Home.scss';
@@ -9,11 +8,6 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [value, setValue] = useState([]);
-
-  function handleChange(newState) {
-    setValue(newState);
-  }
 
   useEffect(() => {
     try {
@@ -42,7 +36,7 @@ const Home = () => {
       ) : error ? (
         <ErrorPage error={error} />
       ) : (
-        <Card data={data} value={value} onChange={handleChange} />
+        <Card data={data} />
       )}
     </div>
   );

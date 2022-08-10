@@ -6,3 +6,22 @@ services:
     container_name: wg-web-challenge
     ports:
       - 3000:3000
+  docker-react-app:
+    build: ./client
+    container_name: docker_react_app
+    ports:
+      - 4000:4000
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
+      
+    
+    
+
+
+
+    
+     

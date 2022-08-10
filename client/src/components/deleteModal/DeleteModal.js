@@ -3,14 +3,11 @@ import { deletePost } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 
 const DeleteModal = props => {
-  const { value, onChange } = props;
+  
 
   const navigate = useNavigate();
 
-  function handleChange() {
-    onChange(!value);
-    // Here, we invoke the callback with the new value
-  }
+ 
 
   const deletePostHandler = () => {
     deletePost(props.id);
@@ -20,7 +17,6 @@ const DeleteModal = props => {
     navigate('/');
     deletePostHandler();
     props.closeDeleteModal(false);
-    handleChange();
     window.location.reload();
   };
 
@@ -45,8 +41,6 @@ const DeleteModal = props => {
           <div className='modal-footer'>
             <button
               onClick={handleClick}
-              onChange={handleChange}
-              value={value}
               type='button'
               className='btn btn-danger'>
               Delete
