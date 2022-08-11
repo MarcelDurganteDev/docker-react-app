@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  client:
+    stdin_open: true
+    tty: true
+    build: ./app
+    ports:
+      - 3001:3001
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - ./.env
+  app:
+    image: wefoxgroup/wg-web-challenge:latest
+    container_name: wg-web-challenge
+    ports:
+      - 3000:3000
+
+   
+
+
+
+
+    
+      
+    
+    
+
+
+
+    
+     
